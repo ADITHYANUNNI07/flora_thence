@@ -1,5 +1,7 @@
-import 'package:flora/application/choice_chip/choice_chip_bloc.dart';
+import 'package:flora/application/choice_chip_bloc/choice_chip_bloc.dart';
+import 'package:flora/application/plant_bloc/plants_bloc.dart';
 import 'package:flora/core/colors/colors.dart';
+import 'package:flora/data/repositories/plant/plant_repo.dart';
 import 'package:flora/presentation/pages/home/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -10,6 +12,7 @@ void main() {
     MultiBlocProvider(
       providers: [
         BlocProvider(create: (_) => ChoiceChipBloc()),
+        BlocProvider(create: (context) => PlantsBloc(PlantRepo())),
       ],
       child: const MyApp(),
     ),

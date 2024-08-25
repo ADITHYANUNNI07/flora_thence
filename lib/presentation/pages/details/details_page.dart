@@ -1,10 +1,10 @@
-import 'package:flora/application/choice_chip/choice_chip_bloc.dart';
+import 'package:flora/application/choice_chip_bloc/choice_chip_bloc.dart';
 import 'package:flora/core/colors/colors.dart';
 import 'package:flora/core/constants/constants.dart';
 import 'package:flora/core/style/style.dart';
 import 'package:flora/core/widget/widget.dart';
 import 'package:flora/data/model/plant_model.dart';
-import 'package:flora/presentation/pages/home/home_page.dart';
+import 'package:flora/presentation/pages/home/widget/home_widget.dart';
 import 'package:flora/presentation/widgets/choice_chips.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -15,9 +15,6 @@ class DetailsScreen extends StatelessWidget {
   final PlantModel plantModel;
   @override
   Widget build(BuildContext context) {
-    int maxSize = plantModel.availableSize.fold(plantModel.availableSize[0],
-        (prev, element) => element > prev ? element : prev);
-
     final size = MediaQuery.of(context).size;
     return BlocProvider(
       create: (_) => ChoiceChipBloc()
@@ -41,8 +38,8 @@ class DetailsScreen extends StatelessWidget {
                           child: SizedBox(
                             width: size.width,
                             child: Container(
-                              height: size.height * state.selectedSize * 0.019,
-                              width: size.height * state.selectedSize * 0.019,
+                              height: size.height * state.selectedSize * 0.01,
+                              width: size.height * state.selectedSize * 0.01,
                               decoration: BoxDecoration(
                                 borderRadius: const BorderRadius.only(
                                   bottomLeft: Radius.circular(25),

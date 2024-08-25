@@ -1,23 +1,50 @@
+import 'package:flora/core/colors/colors.dart';
+import 'package:flora/core/constants/constants.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:toasty_box/toast_enums.dart';
 import 'package:toasty_box/toasty_box.dart';
 
-class NotificationClass {
+class NotificationHandler {
   static snakBarSuccess(String message, BuildContext context) {
-    return ToastService.showSuccessToast(
-      context,
-      length: ToastLength.medium,
-      expandedHeight: 100,
-      message: message,
+    return ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Row(
+          children: [
+            const FaIcon(
+              FontAwesomeIcons.solidCircleCheck,
+              color: colorWhite,
+            ),
+            sizedBox5W,
+            Text(
+              message,
+              style: const TextStyle(fontWeight: FontWeight.bold),
+            ),
+          ],
+        ),
+        backgroundColor: colorGreen,
+      ),
     );
   }
 
   static snakBarWarning(String message, BuildContext context) {
-    return ToastService.showWarningToast(
-      context,
-      length: ToastLength.medium,
-      expandedHeight: 100,
-      message: message,
+    return ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Row(
+          children: [
+            const FaIcon(
+              FontAwesomeIcons.solidCircleQuestion,
+              color: colorWhite,
+            ),
+            sizedBox5W,
+            Text(
+              message,
+              style: const TextStyle(fontWeight: FontWeight.bold),
+            ),
+          ],
+        ),
+        backgroundColor: colorRed,
+      ),
     );
   }
 
